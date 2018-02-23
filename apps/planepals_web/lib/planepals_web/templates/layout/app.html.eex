@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hello Planepals!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+  </head>
+
+  <body>
+    <div id='map'></div>
+    <div class="map-overlay top">
+      <div class="map-overlay-inner">
+        <button class="legend" id="stop">STOP</button>
+      </div>
+    </div>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoia2FuYXRvaG9kZXRzIiwiYSI6ImNqZHoycXdtNTQ3b3kyd3FvOHgwZ3NzMTYifQ.AXE_y-PBtbRZADoDlESHtA';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/kanatohodets/cjdz3817k3j542sqi0gdstimy',
+        center: [-14.038659, -13.931567],
+        zoom: 2.15
+    });
+    </script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
