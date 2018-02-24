@@ -22,9 +22,9 @@ defmodule Planepals.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      applications: [:httpoison],
+      applications: [:httpoison, :flow, :jason],
       mod: {Planepals.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :observer]
     ]
   end
 

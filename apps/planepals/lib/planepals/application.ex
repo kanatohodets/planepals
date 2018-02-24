@@ -10,21 +10,12 @@ defmodule Planepals.Application do
   use Application
 
   def start(_type, _args) do
-    import Supervisor.Spec, warn: false
-
+    # See https://hexdocs.pm/elixir/Supervisor.html
+    # for other strategies and supported options
     Supervisor.start_link([
-      %{
-        id: Planepals.Cache,
-        start: {Planepals.Cache, :start_link, []}
-      },
-      %{
-        id: Planepals.Firehose,
-        start: {Planepals.Firehose, :start_link, [%{interval: 5000}]}
-      },
-      %{
-        id: Planepals.Feed.Opensky,
-        start: {Planepals.Feed.Opensky, :start_link, [%{interval: 15000, url: "https://opensky-network.org/api/states/all"}]}
-      }
+      { Planepals.Cache, []},
+      { Planepals.Firehose, %{interval: 5000}},
+      { Planepals.Feed.Opensky, %{interval: 15000, url: "https://opensky-network.org/api/states/all"}},
     ], strategy: :one_for_one, name: Planepals.Supervisor)
   end
 end
